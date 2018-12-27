@@ -1,0 +1,8 @@
+{
+    "presets": ["react", "es2015", "es2017"],
+    "plugins": [
+        "transform-decorators-legacy", 
+        "transform-class-properties",
+        ["import", {"libraryName": "antd", "libraryDirectory": "lib", "style": true}] // `style: true` 会加载 less 文件
+      ]
+}
