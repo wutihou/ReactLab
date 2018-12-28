@@ -13,4 +13,6 @@ class Page1 extends React.Component {
     }
 }
 
+Page1.menuDisplay = "首页"
+
 export default Page1

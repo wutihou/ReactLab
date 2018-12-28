@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Route, HashRouter as Router} from 'react-router-dom'
+import {Route, HashRouter as Router, Link} from 'react-router-dom'
 import Menus from '../build/menu'
 import {Layout, Menu, Icon} from 'antd';
 
@@ -25,7 +25,11 @@ class Main extends React.Component {
   componentWillMount() {
     let pages = [];
     for (let m in Menus) {
-      pages.push({name: Menus[m].name, component: Menus[m]});
+      pages.push({
+        name: Menus[m].name,
+        menuDisplay: Menus[m].menuDisplay,
+        component: Menus[m]
+      });
     }
     this.setState({pages})
   }
@@ -80,58 +84,58 @@ class Main extends React.Component {
 
   render() {
     return (
-      <Layout>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          onBreakpoint={(broken) => {
-          console.log(broken);
-        }}
-          onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}>
-          <div className="logo"/>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-            {this
-              .state
-              .pages
-              .map((item, i) => {
-                const TagName = item.name
-                const Component = item.component
-                return (
-                  <Menu.Item key={TagName}>
-                    <Icon type="user"/>
-                    <span className="nav-text">{TagName}</span>
-                  </Menu.Item>
-                )
-              })
-}
-          </Menu>
-        </Sider>
+      <Router ref="content">
         <Layout>
-          <Router ref="content">
-            <div style={
-              {
-                minHeight: this.state.minHeight
-              }
-            }>
+          <Sider
+            breakpoint="lg"
+            collapsedWidth="0"
+            onBreakpoint={(broken) => {
+            console.log(broken);
+          }}
+            onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+          }}>
+            <div className="logo"/>
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
+              {this
+                .state
+                .pages
+                .map((item, i) => {
+                  const TagName = item.name
+                  const Component = item.component
+                  return (
+                    <Menu.Item key={TagName}>
+                      <Link to={`/${TagName}`}>
+                        <Icon type="user"/>
+                        <span className="nav-text">{item.menuDisplay || TagName}</span>
+                      </Link>
+                    </Menu.Item>
+                  )
+                })
+}
+            </Menu>
+          </Sider>
+          <Layout>
+            <div style={{
+              minHeight: this.state.minHeight,
+              background: '#fff'
+            }}>
               {this
                 .state
                 .pages
                 .map((item, i) => {
                   const path = `/${item.name}`
                   return <Route key={`${item.name}-${i}`} path={path} component={item.component}></Route>
-                })
-              }
-              </div>
-          </Router>
-          <Footer style={{
-            textAlign: 'center'
-          }} ref="footer">
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
+                })}
+            </div>
+            <Footer style={{
+              textAlign: 'center'
+            }} ref="footer">
+              Ant Design ©2018 Created by Ant UED
+            </Footer>
+          </Layout>
         </Layout>
-      </Layout>
+      </Router>
     )
   }
 }
