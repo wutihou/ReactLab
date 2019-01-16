@@ -18,6 +18,8 @@ class Hello extends React.Component {
     constructor(props) { 
         super(props)
     }
+
+    
     
     componentWillMount() {
         console.log('挂载', this)
