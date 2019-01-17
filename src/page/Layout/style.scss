@@ -1,0 +1,34 @@
+.layout {
+    font-size: 12px;
+    header {
+        width: 100%;
+        height: 3em;
+        background-color: red;
+    }
+    main {
+        height: 30em;
+        background-color: gray;
+        position: relative;
+        article {
+            width: 80%;
+            height: 100%;
+            background-color: palegreen;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        aside {
+            width: 20%;
+            height: 100%;
+            background-color: palevioletred;
+            position: absolute;
+            left: 80%;
+            top: 0;
+        }
+    }
+    footer {
+        width: 100%;
+        height: 15em;
+        background-color: slateblue;
+    }
+}
