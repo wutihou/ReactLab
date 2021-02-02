@@ -1,0 +1,8 @@
+.page-excel2json {
+    & .sheetName {
+        & :global(.fish-input) {
+            width: 15em;
+            margin-left: 1em;
+        }
+    }
+}

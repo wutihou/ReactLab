@@ -1,8 +1,8 @@
 {
-    "presets": ["react", "es2015", "es2017"],
+    "presets": ["react", "es2015", "es2017", "stage-0"],
     "plugins": [
         "transform-decorators-legacy", 
         "transform-class-properties",
-        ["import", {"libraryName": "antd", "libraryDirectory": "lib", "style": true}] // `style: true` 会加载 less 文件
+        ["import", {"libraryName": "fish", "libraryDirectory": "lib", "style": true}] // `style: true` 会加载 less 文件
       ]
 }

@@ -1,12 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import {Route, HashRouter as Router, Link} from 'react-router-dom'
 import Menus from '../build/menu'
-import {Layout, Menu, Icon} from 'antd';
+import {Layout, Menu, Icon} from 'fish'
 
-const {Content, Footer, Sider} = Layout;
+const { Content, Footer, Sider } = Layout;
 
-import 'antd/dist/antd.css'
+React.PropTypes = PropTypes
+
+import 'fish/dist/fish.min-1.css'
+import 'fish/dist/fish.min-2.css'
 
 class Main extends React.Component {
 
@@ -90,7 +94,6 @@ class Main extends React.Component {
             breakpoint="lg"
             collapsedWidth="0"
             onBreakpoint={(broken) => {
-            console.log(broken);
           }}
             onCollapse={(collapsed, type) => {
             console.log(collapsed, type);
@@ -106,7 +109,7 @@ class Main extends React.Component {
                   return (
                     <Menu.Item key={TagName}>
                       <Link to={`/${TagName}`}>
-                        <Icon type="user"/>
+                        <Icon type="read"/>
                         <span className="nav-text">{item.menuDisplay || TagName}</span>
                       </Link>
                     </Menu.Item>

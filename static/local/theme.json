@@ -1,0 +1,45 @@
+{
+  "system.name": "远程设备管理系统",
+  "system.name.short": "MDM",
+  "login.hint": "请登录",
+  "login.btn.text": "登录",
+  "login.placeholder.account": "请输入帐号",
+  "login.placeholder.pwd": "请输入密码",
+  "login.placeholder.code": "请输入验证码",
+  "user.role.admin": "管理员",
+  "user.role.principal": "校长",
+  "user.role.teacher": "老师",
+  "user.role.student": "学生",
+  "user.role.guest": "访客",
+  "user.role.leader": "领导",
+  "user.role.front-end": "前端开发",
+  "user.role.ccpa": "ccpa管理员",
+  "user.logout": "退出",
+
+  "info.num": "发送至 {num} 台设备",
+  "general.num": "发送指令至 {num} 台设备",
+  "notice.num": "发送通告至 {num} 台设备",
+  "distribution.num": "发送分发至 {num} 台设备",
+  "noting.num": "成功{successnum}台，失败{fail}台，执行中{waitingnum}台",
+
+  "status.-1": "发送失败",
+  "status.0": "发送成功",
+  "status.1": "发送中",
+  "status.10000": "未知",
+  "status.2000": "发送完成",
+  "status.9999": "超时",
+  "status.999": "执行中",
+
+  "implement": "查看所有执行信息",
+
+  "username": "用户名：",
+  "password": "密 码：",
+  "language": "语 言：",
+
+  "version": "系统版本：{sysversion}",
+
+  "error.permission.denied": "没有权限",
+  "distribution.nothing" : "暂无分发",
+  "notice.nothing" : "暂无通告",
+  "general.nothing" : "暂无指令"
+}

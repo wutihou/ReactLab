@@ -35,7 +35,7 @@ function genMenuFile() {
             const menuFileStr = menuFileTmp.join('');
         
             fs.writeFileSync(path.join(menuDir, 'index.js'), menuFileStr);
-            console.log('gen menu file', menu)
+            console.log('menu', menu)
             resolve();
         });
     });

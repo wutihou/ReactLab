@@ -1,0 +1,9 @@
+.component-regularinput.illegal input {
+    border-color: #ff5745 !important
+}
+
+.component-regularinput .msg {
+    color: #ff5745 !important;
+    font-size: 0.8em;
+    margin-top: 0.1em;
+}

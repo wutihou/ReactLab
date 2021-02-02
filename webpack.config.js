@@ -18,7 +18,7 @@ let config = {
 				}],
 			},
 			{
-				test: /\.(css|scss)$/,
+				test: /\.(scss)$/,
 				exclude: /(node_modules)/,
 				use: [{
 						loader: 'style-loader'
@@ -32,6 +32,16 @@ let config = {
 					},
 					{
 						loader: 'sass-loader'
+					}
+				]
+			},{
+				test: /\.(css)$/,
+				exclude: /(node_modules)/,
+				use: [{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader'
 					}
 				]
 			},
@@ -54,7 +64,7 @@ let config = {
 				]
 			},
 			{
-				test: /\.less/,
+				test: /\.(less)$/,
 				include: path.resolve(__dirname, 'node_modules'),
 				loaders: [
 					{
@@ -71,14 +81,27 @@ let config = {
 						}
 					},
 					'less-loader'],
-			}
+			},
+			{
+				test: /\.(png|jpg|gif|svg|woff2?|eot|ttf)(\?.*)?$/,
+				use: [{
+				  loader: 'url-loader',
+				  options: {
+					limit: 8192,
+					name: '[name].[ext]?[hash:7]'
+				  }
+				}]
+			  }
 		]
 	},
 	resolve: {
 		extensions: ['.js', '.jsx'],
 		alias: {
 			'@components': path.resolve(__dirname, 'src/components/'),
-			'@page': path.resolve(__dirname, 'src/page/')
+			'@page': path.resolve(__dirname, 'src/page/'),
+			'~': path.resolve(__dirname, 'src/'),
+			'antd': '@sdp.nd/fish',
+			'fish': '@sdp.nd/fish'
 		}
 	},
 	devServer: {
@@ -107,7 +130,7 @@ let config = {
 					name: "commons",
 					test:/[\\/]src[\\/]js[\\/]/,
                     chunks: "all",
-                    minChunks: 1
+                    minChunks: 2
                 }
             }
         }
@@ -117,8 +140,7 @@ let config = {
 if (process.env.NODE_ENV === 'production') { // 生产
 	config['mode'] = process.env.NODE_ENV;
 	config['plugins'].push(new MiniCssExtractPlugin({
-		filename: "[name].css",
-		chunkFilename: "[id].css"
+		filename: "[name].css"
 	}))
 } else {
 	Object.assign(config, {
@@ -132,8 +154,7 @@ if (process.env.NODE_ENV === 'production') { // 生产
 	}));
 	config['plugins'].push(new webpack.HotModuleReplacementPlugin());
 	config['plugins'].push(new MiniCssExtractPlugin({
-		filename: "[name].css",
-		chunkFilename: "[id].css"
+		filename: "[name].css"
 	}))
 }
 
